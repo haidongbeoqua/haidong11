@@ -72,27 +72,25 @@ local Button = MainTab:CreateButton({
    Name = "NoClip",
    Callback = function()
    --Noclip
-local Noclip = nil
-local Clip = nil
+local player = game.Players.LocalPlayer  -- Lấy người chơi
+local character = player.Character or player.CharacterAdded:Wait()  -- Lấy nhân vật của người chơi
+local humanoid = character:WaitForChild("Humanoid")  -- Lấy humanoid của nhân vật
 
-function noclip()
-	Clip = false
-	local function Nocl()
-		if Clip == false and game.Players.LocalPlayer.Character ~= nil then
-			for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-				if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
-					v.CanCollide = false
-				end
-			end
-		end
-		wait(0.2) -- basic optimization
-	end
-	Noclip = game:GetService('RunService').Stepped:Connect(Nocl)
+-- Tắt va chạm giữa nhân vật và tất cả vật thể
+local function disableCollisions()
+    for _, part in pairs(character:GetChildren()) do
+        if part:IsA("BasePart") then
+            part.CanCollide = false  -- Tắt va chạm cho các bộ phận của nhân vật
+        end
+    end
 end
 
-function clip()
-	if Noclip then Noclip:Disconnect() end
-	Clip = true
-end
+-- Khi nhân vật bắt đầu game, chúng ta tắt va chạm ngay lập tức
+disableCollisions()
 
-noclip() -- to toggle noclip() and clip()
+-- Kiểm tra khi nhân vật bị di chuyển, tránh để va chạm xảy ra
+humanoid.Running:Connect(function(speed)
+    if speed > 0 then
+        disableCollisions()  -- Giữ cho va chạm bị tắt khi nhân vật di chuyển
+    end
+end)
