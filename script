@@ -120,3 +120,19 @@ local TPToHighButton = MainTab:CreateButton({
       end
    end,
 })
+
+local TPDownButton = MainTab:CreateButton({
+   Name = "Go Down",
+   Callback = function()
+      local player = game.Players.LocalPlayer
+      if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+         local hrp = player.Character.HumanoidRootPart
+         hrp.CFrame = hrp.CFrame + Vector3.new(0, -200, 0) -- Teleport 200 studs downward
+         Rayfield:Notify({
+            Title = "Teleported!",
+            Content = "You have been teleported down!",
+            Duration = 2
+         })
+      end
+   end,
+})
