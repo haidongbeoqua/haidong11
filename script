@@ -94,3 +94,4 @@ humanoid.Running:Connect(function(speed)
         disableCollisions()  -- Giữ cho va chạm bị tắt khi nhân vật di chuyển
     end
 end)
+})
