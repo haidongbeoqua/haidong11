@@ -104,3 +104,19 @@ local SpeedBoostButton = MainTab:CreateButton({
        end
    end,
 })
+
+local TPToHighButton = MainTab:CreateButton({
+   Name = "TP to High",
+   Callback = function()
+      local player = game.Players.LocalPlayer
+      if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+         local hrp = player.Character.HumanoidRootPart
+         hrp.CFrame = hrp.CFrame + Vector3.new(0, 200, 0) -- Teleport 200 studs upward
+         Rayfield:Notify({
+            Title = "Teleported!",
+            Content = "You have been teleported high up!",
+            Duration = 2
+         })
+      end
+   end,
+})
