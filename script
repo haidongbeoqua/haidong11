@@ -136,3 +136,78 @@ local TPDownButton = MainTab:CreateButton({
       end
    end,
 })
+
+local espEnabled = false
+local espBoxes = {}
+
+local function addESP(player)
+    if player ~= game.Players.LocalPlayer then
+        player.CharacterAdded:Connect(function(character)
+            local hrp = character:WaitForChild("HumanoidRootPart", 5)
+            if hrp then
+                local box = Instance.new("BoxHandleAdornment")
+                box.Name = "ESPBox"
+                box.Adornee = hrp
+                box.Size = Vector3.new(6, 6, 6)
+                box.Color3 = Color3.fromRGB(255, 0, 0)
+                box.Transparency = 0.5
+                box.AlwaysOnTop = true
+                box.ZIndex = 10
+                box.Parent = hrp
+                espBoxes[player] = box
+            end
+        end)
+        -- Add box if character already exists
+        if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+            local hrp = player.Character.HumanoidRootPart
+            local box = Instance.new("BoxHandleAdornment")
+            box.Name = "ESPBox"
+            box.Adornee = hrp
+            box.Size = Vector3.new(6, 6, 6)
+            box.Color3 = Color3.fromRGB(255, 0, 0)
+            box.Transparency = 0.5
+            box.AlwaysOnTop = true
+            box.ZIndex = 10
+            box.Parent = hrp
+            espBoxes[player] = box
+        end
+    end
+end
+
+local function removeESP()
+    for player, box in pairs(espBoxes) do
+        if box and box.Parent then
+            box:Destroy()
+        end
+    end
+    espBoxes = {}
+end
+
+local ESPButton = MainTab:CreateButton({
+    Name = "Toggle ESP Player",
+    Callback = function()
+        espEnabled = not espEnabled
+        if espEnabled then
+            -- Add ESP to all players
+            for _, player in ipairs(game.Players:GetPlayers()) do
+                addESP(player)
+            end
+            -- Add ESP to new players
+            game.Players.PlayerAdded:Connect(function(player)
+                addESP(player)
+            end)
+            Rayfield:Notify({
+                Title = "ESP Enabled",
+                Content = "Players are now highlighted!",
+                Duration = 2
+            })
+        else
+            removeESP()
+            Rayfield:Notify({
+                Title = "ESP Disabled",
+                Content = "ESP has been turned off.",
+                Duration = 2
+            })
+        end
+    end
+})
