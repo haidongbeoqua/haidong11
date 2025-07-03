@@ -67,31 +67,3 @@ game:GetService("UserInputService").JumpRequest:connect(function()
 end)
    end,
 })
-
-local Button = MainTab:CreateButton({
-   Name = "NoClip",
-   Callback = function()
-   --Noclip
-local player = game.Players.LocalPlayer  -- Lấy người chơi
-local character = player.Character or player.CharacterAdded:Wait()  -- Lấy nhân vật của người chơi
-local humanoid = character:WaitForChild("Humanoid")  -- Lấy humanoid của nhân vật
-
--- Tắt va chạm giữa nhân vật và tất cả vật thể
-local function disableCollisions()
-    for _, part in pairs(character:GetChildren()) do
-        if part:IsA("BasePart") then
-            part.CanCollide = false  -- Tắt va chạm cho các bộ phận của nhân vật
-        end
-    end
-end
-
--- Khi nhân vật bắt đầu game, chúng ta tắt va chạm ngay lập tức
-disableCollisions()
-
--- Kiểm tra khi nhân vật bị di chuyển, tránh để va chạm xảy ra
-humanoid.Running:Connect(function(speed)
-    if speed > 0 then
-        disableCollisions()  -- Giữ cho va chạm bị tắt khi nhân vật di chuyển
-    end
-end)
-})
