@@ -67,3 +67,40 @@ game:GetService("UserInputService").JumpRequest:connect(function()
 end)
    end,
 })
+
+local noclip = false
+local NoclipButton = MainTab:CreateButton({
+   Name = "Toggle Noclip",
+   Callback = function()
+       noclip = not noclip
+       Rayfield:Notify({
+           Title = "Noclip",
+           Content = noclip and "Noclip ON" or "Noclip OFF",
+           Duration = 2
+       })
+       game:GetService("RunService").Stepped:Connect(function()
+           if noclip and game.Players.LocalPlayer.Character then
+               for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                   if v:IsA("BasePart") and v.CanCollide == true then
+                       v.CanCollide = false
+                   end
+               end
+           end
+       end)
+   end
+})
+
+local SpeedBoostButton = MainTab:CreateButton({
+   Name = "Speed Boost",
+   Callback = function()
+       local player = game.Players.LocalPlayer
+       if player.Character and player.Character:FindFirstChildOfClass("Humanoid") then
+           player.Character:FindFirstChildOfClass("Humanoid").WalkSpeed = 100 -- Change 100 to your desired speed
+           Rayfield:Notify({
+               Title = "Speed Boost",
+               Content = "WalkSpeed set to 100!",
+               Duration = 2
+           })
+       end
+   end,
+})
