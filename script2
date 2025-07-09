@@ -37,10 +37,11 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
-local Tab = Window:CreateTab("Main", 4483362458) -- Title, Image
+local MainTab = Window:CreateTab("Main", 4483362458) -- Title, Image
+local MainSection = MainTab:CreateSection("funcion famous")
 
 local Button = MainTab:CreateButton({
-   Name = "Button Example",
+   Name = "inf jump",
    Callback = function()
    -- The function that takes place when the button is pressed
    end,
