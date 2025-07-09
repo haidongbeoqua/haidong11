@@ -6,7 +6,7 @@ local Window = Rayfield:CreateWindow({
    LoadingTitle = "Script Cao Binh Dau Tien",
    LoadingSubtitle = "by Hoang Hai Dong",
    ShowText = "Rayfield", -- for mobile users to unhide rayfield, change if you'd like
-   Theme = Theme = {
+   Theme = {
     TextColor = Color3.fromRGB(240, 255, 255), -- Neon white/cyan
 
     Background = Color3.fromRGB(15, 15, 30), -- Deep dark for neon contrast
