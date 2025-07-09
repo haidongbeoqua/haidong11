@@ -104,31 +104,3 @@ local SpeedBoostButton = MainTab:CreateButton({
        end
    end,
 })
-
-local tpUp = true -- State variable to toggle between up and down
-
-local TPUpDownButton = MainTab:CreateButton({
-   Name = "Toggle TP Up/Down",
-   Callback = function()
-      local player = game.Players.LocalPlayer
-      if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-         local hrp = player.Character.HumanoidRootPart
-         if tpUp then
-            hrp.CFrame = hrp.CFrame + Vector3.new(0, 200, 0) -- Go up
-            Rayfield:Notify({
-               Title = "Teleported!",
-               Content = "You have been teleported high up!",
-               Duration = 2
-            })
-         else
-            hrp.CFrame = hrp.CFrame + Vector3.new(0, -200, 0) -- Go down
-            Rayfield:Notify({
-               Title = "Teleported!",
-               Content = "You have been teleported down!",
-               Duration = 2
-            })
-         end
-         tpUp = not tpUp -- Toggle state for next click
-      end
-   end,
-})
