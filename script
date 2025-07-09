@@ -6,47 +6,7 @@ local Window = Rayfield:CreateWindow({
    LoadingTitle = "Script Cao Binh Dau Tien",
    LoadingSubtitle = "by Hoang Hai Dong",
    ShowText = "Rayfield", -- for mobile users to unhide rayfield, change if you'd like
-   Theme = {
-    TextColor = Color3.fromRGB(240, 255, 255), -- Neon white/cyan
-
-    Background = Color3.fromRGB(15, 15, 30), -- Deep dark for neon contrast
-    Topbar = Color3.fromRGB(0, 255, 255), -- Neon cyan
-    Shadow = Color3.fromRGB(20, 20, 40),
-
-    NotificationBackground = Color3.fromRGB(10, 10, 40),
-    NotificationActionsBackground = Color3.fromRGB(0, 255, 128), -- Neon green
-
-    TabBackground = Color3.fromRGB(40, 0, 80), -- Neon purple
-    TabStroke = Color3.fromRGB(10, 255, 200), -- Neon cyan/green
-    TabBackgroundSelected = Color3.fromRGB(255, 20, 147), -- Neon pink
-    TabTextColor = Color3.fromRGB(0, 255, 255),
-    SelectedTabTextColor = Color3.fromRGB(255, 255, 0), -- Neon yellow
-
-    ElementBackground = Color3.fromRGB(20, 20, 40),
-    ElementBackgroundHover = Color3.fromRGB(0, 255, 255), -- Neon cyan
-    SecondaryElementBackground = Color3.fromRGB(25, 25, 60),
-    ElementStroke = Color3.fromRGB(255, 0, 255), -- Neon magenta
-    SecondaryElementStroke = Color3.fromRGB(0, 255, 128), -- Neon green
-            
-    SliderBackground = Color3.fromRGB(50, 50, 70),
-    SliderProgress = Color3.fromRGB(255, 255, 0), -- Neon yellow
-    SliderStroke = Color3.fromRGB(0, 255, 255), -- Neon cyan
-
-    ToggleBackground = Color3.fromRGB(30, 30, 50),
-    ToggleEnabled = Color3.fromRGB(57, 255, 20), -- Neon green
-    ToggleDisabled = Color3.fromRGB(255, 0, 255), -- Neon magenta
-    ToggleEnabledStroke = Color3.fromRGB(0, 255, 255), -- Neon cyan
-    ToggleDisabledStroke = Color3.fromRGB(255, 20, 147), -- Neon pink
-    ToggleEnabledOuterStroke = Color3.fromRGB(255, 255, 0), -- Neon yellow
-    ToggleDisabledOuterStroke = Color3.fromRGB(65, 65, 65),
-
-    DropdownSelected = Color3.fromRGB(0, 255, 255), -- Neon cyan
-    DropdownUnselected = Color3.fromRGB(20, 20, 40),
-
-    InputBackground = Color3.fromRGB(20, 20, 40),
-    InputStroke = Color3.fromRGB(255, 0, 255), -- Neon magenta
-    PlaceholderColor = Color3.fromRGB(0, 255, 255) -- Neon cyan
-}
+   Theme = "amethyst"
 
    ToggleUIKeybind = "K", -- The keybind to toggle the UI visibility (string like "K" or Enum.KeyCode)
 
