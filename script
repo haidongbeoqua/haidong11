@@ -173,4 +173,4 @@ local TPUpDownButton = MainTab:CreateButton({
    end,
 })
 
-print:("loaded")
+print:("load")
