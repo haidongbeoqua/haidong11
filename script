@@ -173,6 +173,9 @@ local TPUpDownButton = MainTab:CreateButton({
    end,
 })
 
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ActivePetsService = ReplicatedStorage:WaitForChild("Modules"):WaitForChild("PetServices"):WaitForChild("ActivePetsService")
+local service = require(ActivePetsService)
 local skeletonEspEnabled = false
 local skeletonEspConnections = {}
 local skeletonEspDrawings = {}
